@@ -647,8 +647,8 @@ footer.bg-dark li,
   height: 100%;
   top: 0;
   left: 0;
-  background: #ffffff;
-  opacity: 0.1;
+  background: #000000;
+  opacity: 0.4;
   z-index: 2;
 }
 .image-bg h1,

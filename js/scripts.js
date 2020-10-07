@@ -51,6 +51,8 @@ $(document).ready(function() {
         $(this).css('background', 'url("' + imgSrc + '")');
         $(this).children('img').hide();
         $(this).css('background-position', 'initial');
+        $(this).css('filter', 'blur(6px)');
+        $(this).css('-webkit-filter', 'blur(6px)');
     });
 
     // Fade in background images
