@@ -282,40 +282,6 @@ $(document).ready(function() {
            twitterFetcher.fetch(TweetConfig);
       });
 
-    // Instagram Feed
-    
-    if($('.instafeed').length){
-    	jQuery.fn.spectragram.accessData = {
-			accessToken: '1406933036.dc95b96.2ed56eddc62f41cbb22c1573d58625a2',
-			clientID: '87e6d2b8a0ef4c7ab8bc45e80ddd0c6a'
-		};	
-
-        $('.instafeed').each(function() {
-            var feedID = $(this).attr('data-user-name');
-            $(this).children('ul').spectragram('getUserFeed', {
-                query: feedID,
-                max: 12
-            });
-        });
-    }   
-
-   
-
-    // Flickr Feeds
-
-    if($('.flickr-feed').length){
-        $('.flickr-feed').each(function(){
-            var userID = $(this).attr('data-user-id');
-            var albumID = $(this).attr('data-album-id');
-            $(this).flickrPhotoStream({ id: userID, setId: albumID, container: '<li class="masonry-item" />' });   
-            setTimeout(function(){
-                initializeMasonry();
-                window.dispatchEvent(new Event('resize'));
-            }, 1000); 
-        });
-
-    }
-
     // Image Sliders
     if($('.slider-all-controls, .slider-paging-controls, .slider-arrow-controls, .slider-thumb-controls, .logo-carousel').length){
         $('.slider-all-controls').flexslider({
