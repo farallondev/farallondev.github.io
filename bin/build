@@ -1,0 +1,33 @@
+#!/usr/bin/env node
+
+const FS = require('fs');
+const Path = require('path');
+const ChildProcess = require('child_process');
+
+const rootPath = Path.join(
+  __dirname,
+  '..',
+);
+
+const templatePath = Path.join(
+  rootPath,
+  'templates',
+);
+
+const files = FS.readdirSync(templatePath);
+
+const ejsFiles = files.filter((file) => file.endsWith('.ejs'));
+
+const generateFile = (template) => {
+  const file = template.replace('.ejs', '');
+  const html = `${file}.html`;
+
+  ChildProcess.execSync(
+    `npx ejs ${Path.join(templatePath, template)} -o ${Path.join(rootPath, html)}`,
+    {
+      cwd: rootPath,
+    },
+  );
+};
+
+ejsFiles.forEach(generateFile);
