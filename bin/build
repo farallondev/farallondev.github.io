@@ -4,6 +4,8 @@ const FS = require('fs');
 const Path = require('path');
 const ChildProcess = require('child_process');
 
+const scope = process.argv[2];
+
 const rootPath = Path.join(
   __dirname,
   '..',
@@ -16,7 +18,7 @@ const templatePath = Path.join(
 
 const files = FS.readdirSync(templatePath);
 
-const ejsFiles = files.filter((file) => file.endsWith('.ejs'));
+const ejsFiles = files.filter((file) => file.endsWith('.ejs') && (!scope || scope && file === `${scope}.ejs`));
 
 const generateFile = (template) => {
   const file = template.replace('.ejs', '');
